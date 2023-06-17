@@ -1,0 +1,41 @@
+{
+
+    "code-runner.executorMap": {
+        // FileStream
+        "cpp" : "if (!(Test-Path -Path \"$workspaceRoot\\bin\")){mkdir \"$workspaceRoot\\bin\" | Out-Null} && g++ -Wall -std=c++11 -fexec-charset=GBK -lshow -o $workspaceRoot\\bin\\$fileNameWithoutExt.exe $fullFileName && start Pauser '\"$workspaceRoot\\bin\\$fileNameWithoutExt.exe\" input.txt  out.txt ' ",
+        "java": "chcp 65001 | Out-Null && javac  -d $workspaceRoot\\bin -encoding UTF-8 $fullFileName && start Pauser '\"java -classpath $workspaceRoot\\bin $fileNameWithoutExt \" input.txt out.txt  '",
+        "python" : "start Pauser '\"python -u $fullFileName\" input.txt out.txt'",
+        "javascript":"start Pauser '\"node $fullFileName\" input.txt out.txt' "
+    },
+
+    "code-runner.runInTerminal": true
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
