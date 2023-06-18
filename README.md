@@ -50,7 +50,7 @@
 
 值得注意的是,由于输入参数是严格的三个,如果有空格隔开的一个参数,需要使用引号包含使其视为一个参数.
 
-如果需要配合code-runner插件使用,您需要在.vscode文件夹中的settins.json文件中配置如下的设置
+如果需要配合code-runner插件使用,您需要在.vscode文件夹中的settings.json文件中配置如下的设置
 
 ```json
 {
