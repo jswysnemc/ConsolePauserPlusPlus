@@ -1,0 +1,40 @@
+{
+
+    "code-runner.executorMap": {
+        // FileStream
+        "cpp":"mkdir -p $workspaceRoot/bin && g++ $fileName -o $workspaceRoot/bin/$fileNameWithoutExt && xfce4-terminal --command \"Pauser '$workspaceRoot/bin/$fileNameWithoutExt' 'input.txt' 'out.txt' \" --hold ",
+        "java": "mkdir -p $workspaceRoot/bin &&  javac  -d $workspaceRoot/bin -encoding UTF-8 $fileName && xfce4-terminal --command \"Pauser 'java -classpath $workspaceRoot/bin $fileNameWithoutExt' 'input.txt' 'out.txt' \" --hold ",
+        "python" : "xfce4-terminal --command \"Pauser 'python -u $fullFileName'  'input.txt' 'out.txt' \"",
+        "javascript":"xfce4-terminal --command  \"Pauser 'node $fullFileName' 'input.txt' 'out.txt' \""
+     },
+
+    "code-runner.runInTerminal": true
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

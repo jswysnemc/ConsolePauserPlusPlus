@@ -6,7 +6,7 @@
 
 此工具仅在windows平台上配合使用,可以配合vscode及其code-runner插件获得良好体验,欢迎提交linux版本代码
 
-最新版本的源码在verson6文件夹(请宽恕我拼写错误)中,您也可以看看前几个版本的代码,看到更迭的步骤
+最新版本的源码在src文件夹中,您也可以看看前几个版本的代码,看到更迭的步骤
 
 代码原理: 通过CreateProcess 创建一个子进程,
 
@@ -52,9 +52,10 @@
 
 如果需要配合code-runner插件使用,您需要在.vscode文件夹中的settings.json文件中配置如下的设置
 
+如果您是 windows平台：
+
 ```json
 {
-
     "code-runner.executorMap": {
         // FileStream
         "cpp" : "if (!(Test-Path -Path \"$workspaceRoot\\bin\")){mkdir \"$workspaceRoot\\bin\" | Out-Null} && g++ -Wall -std=c++11 -fexec-charset=GBK -lshow -o $workspaceRoot\\bin\\$fileNameWithoutExt.exe $fullFileName && start Pauser '\"$workspaceRoot\\bin\\$fileNameWithoutExt.exe\" input.txt  out.txt ' ",
@@ -64,10 +65,27 @@
     },
 
     "code-runner.runInTerminal": true
-
 }
 ```
 
-在根文件夹中已经编译好了一个gbk编码版本的程序,您可以直接使用
+如果您是linux平台，并且使用的是 xfce4-terminal 终端：
+
+```json
+{
+    "code-runner.executorMap": {
+        // FileStream
+        "cpp":"mkdir -p $workspaceRoot/bin && g++ $fileName -o $workspaceRoot/bin/$fileNameWithoutExt && xfce4-terminal --command \"Pauser '$workspaceRoot/bin/$fileNameWithoutExt' 'input.txt' 'out.txt' \" --hold ",
+        "java": "mkdir -p $workspaceRoot/bin &&  javac  -d $workspaceRoot/bin -encoding UTF-8 $fileName && xfce4-terminal --command \"Pauser 'java -classpath $workspaceRoot/bin $fileNameWithoutExt' 'input.txt' 'out.txt' \" --hold ",
+        "python" : "xfce4-terminal --command \"Pauser 'python -u $fullFileName'  'input.txt' 'out.txt' \"",
+        "javascript":"xfce4-terminal --command  \"Pauser 'node $fullFileName' 'input.txt' 'out.txt' \""
+     },
+
+    "code-runner.runInTerminal": true
+}
+```
+
+
+
+在根文件夹中已经编译好了一个win64版本gbk编码的程序和一个linux平台的程序,您可以直接使用
 
 注意,因为是基于进程信息的检测内存耗时的,所以这个程序仅在c++程序使用时可以比较准确的检测的内存占用,其他语言似乎无法准确检测其内存占用
