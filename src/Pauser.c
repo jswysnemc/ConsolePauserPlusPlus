@@ -261,9 +261,6 @@ int exec_command(int argc,char *argv[]){
 
 
 
-    memset(&ProcessInfo2, 0, sizeof(ProcessInfo2));
-    memset(&StartupInfo2, 0, sizeof(StartupInfo2));
-    StartupInfo2.cb = sizeof(StartupInfo2);
 
     // 创建进程
     if (!CreateProcess(NULL, CommandLine, NULL, 
@@ -272,13 +269,7 @@ int exec_command(int argc,char *argv[]){
         return printf("\n无法创建进程: %s\n请按任意键继续 . . . ", CommandLine), getch(), 0;
 
 
-    long long pid = ProcessInfo.dwProcessId;
-    char cmd[330];
-    sprintf(cmd, "jmap -dump:format=b,file=dump.hprof %lld",pid);
-    printf("\ncmd:%s\n",cmd);
-    CreateProcess(NULL,cmd,NULL,
-    NULL,TRUE,0,NULL,NULL,
-    &StartupInfo2,&ProcessInfo2);
+
 
     // 查询进程相关信息
     QueryPerformanceFrequency(&Frequency);
