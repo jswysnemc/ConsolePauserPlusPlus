@@ -1,6 +1,11 @@
 # 编译器
 CC := cc
 
+
+PREFIX = ~/.local/share/pauser
+
+INSTALL_PATH = $(PREFIX)/bin
+
 # 源文件目录
 SRC_DIR := src
 
@@ -26,8 +31,10 @@ SRC_FILES := $(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 # 生成对应的目标文件列表
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.$(SRC_EXT), $(OBJ_DIR)/%.$(OBJ_EXT), $(SRC_FILES))
 
+BIN_NAME := pauser
+
 # 目标可执行文件
-TARGET := $(BIN_DIR)/pauser
+TARGET := $(BIN_DIR)/$(BIN_NAME)
 
 # 默认目标，编译可执行文件
 all: $(TARGET)
@@ -48,3 +55,12 @@ clean:
 
 # 声明伪目标，防止与文件名冲突
 .PHONY: all clean
+
+
+install: $(TARGET)
+	# 创建安装路径（如果不存在）
+	mkdir -p $(INSTALL_PATH)
+	# 将可执行文件复制到安装路径
+	cp $(TARGET) $(INSTALL_PATH)
+	sudo -E ln -sf $(INSTALL_PATH)/$(BIN_NAME) /usr/bin/$(BIN_NAME)
+	
