@@ -1,7 +1,7 @@
 # 编译器
 CC := gcc
 
-LDFLAGS+='-L-zrelro -L-znow'
+LDFLAGS = '-L-zrelro -L-znow'
 
 PREFIX = ~/.local/share/pauser
 
@@ -43,12 +43,12 @@ all: $(TARGET)
 # 生成目标文件
 $(OBJ_DIR)/%.$(OBJ_EXT): $(SRC_DIR)/%.$(SRC_EXT)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) -c $< -o $@
 
 # 链接目标文件生成可执行文件
 $(TARGET): $(OBJ_FILES)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
 # 清理中间文件和目标文件
 clean:
