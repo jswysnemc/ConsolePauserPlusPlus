@@ -50,7 +50,8 @@ void showArgs(int argc,char *argv[]){
 
 int exec_command(int argc,char *argv[]){
     if (argc < 2 || argc > 4) 
-        return printf("使用方法:\n\n Pauser <运行指令> <输入文件> <输出文件>\n获得参数如下:\n"), showArgs(argc, argv), getchar(), -1;
+        return printf("使用方法:\n\n Pauser <运行指令> <输入文件> <输出文件> \n \
+        详细使用方法请参考: https://github.com/jswysnemc/ConsolePauserPlusPlus \n 获得参数如下:\n"), showArgs(argc, argv),  -1;
 
     
     // 定义相关的变量
@@ -204,9 +205,10 @@ void showArgs(int argc,char *argv[]){
 
 int exec_command(int argc,char *argv[]){
     if (argc < 2 || argc > 4) 
-        return printf("使用方法:\n\n Pauser <运行指令> <输入文件> <输出文件>\n获得参数如下:\n"), showArgs(argc, argv), getch(), -1;
+        return printf("使用方法:\n\n Pauser <运行指令> <输入文件> <输出文件> \n \
+        详细使用方法请参考: https://github.com/jswysnemc/ConsolePauserPlusPlus \n 获得参数如下:\n"), showArgs(argc, argv),  -1;
 
-    
+
     // 定义相关的变量
     CHAR CommandLine[MAX_PATH];
     STARTUPINFO StartupInfo;
