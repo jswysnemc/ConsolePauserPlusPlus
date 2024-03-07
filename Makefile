@@ -13,7 +13,7 @@ SRC_DIR := src
 INC_DIR := $(SRC_DIR)/include
 
 # 编译选项
-CFLAGS := -Wall -I$(INC_DIR) -g 
+CFLAGS := -I$(INC_DIR) 
 
 # 中间文件目录
 OBJ_DIR := build/obj
