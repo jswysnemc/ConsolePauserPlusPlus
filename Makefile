@@ -1,6 +1,7 @@
 # 编译器
-CC := cc
+CC := gcc
 
+LDFLAGS+='-L-zrelro -L-znow'
 
 PREFIX = ~/.local/share/pauser
 
