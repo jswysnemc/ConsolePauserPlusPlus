@@ -1,6 +1,7 @@
 #if defined __linux
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <stdio.h>
 #include <sys/wait.h>
 #include <sys/time.h>
@@ -190,6 +191,7 @@ int main(int argc, char *argv[]){
 #include <Windows.h>
 #include <Psapi.h>
 #include <stdio.h>
+#include <string.h>
 #include <conio.h>
 // 改变颜色的宏
 #define SET_COLOR(x)            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (x)); //0~15
